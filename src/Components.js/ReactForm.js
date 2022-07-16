@@ -4,15 +4,24 @@ const ReactForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [allEntry,setAllEnrty] = useState([]);
+
+const formSubmit = (event)=>{
+    event.preventDefault();
+
+    const newEntry={
+        email:email,
+        password:password
+    };
+    setAllEnrty([...allEntry,newEntry]);
+}
+
     const changeHandler0 = (event) => {
         setEmail(event.target.value);
-
     }
 
     const changeHandler1 = (event) => {
         setPassword(event.target.value);
-
-
     }
 
 
@@ -21,7 +30,7 @@ const ReactForm = () => {
 
         <>
 
-            <form action='' >
+            <form action='' onSubmit={formSubmit}>
 
                 <div>
                     <label htmlFor="email">Email</label>
@@ -37,6 +46,22 @@ const ReactForm = () => {
                 <button type="submit">Submit</button>
 
             </form>
+
+            <div>
+                {
+                    allEntry.map((curElem)=>{
+                        return(
+                            <div className='showDataStyle'>
+                                <p>{curElem.email}</p>
+                                <p>{curElem.password}</p>
+
+                            </div>
+                        )
+                    })
+                }
+
+
+            </div>
 
         </>
 
