@@ -14,6 +14,9 @@ const formSubmit = (event)=>{
         password:password
     };
     setAllEnrty([...allEntry,newEntry]);
+
+    setEmail("");
+    setPassword("");
 }
 
     const changeHandler0 = (event) => {
@@ -51,7 +54,7 @@ const formSubmit = (event)=>{
                 {
                     allEntry.map((curElem)=>{
                         return(
-                            <div className='showDataStyle'>
+                            <div className='showDataStyle '>
                                 <p>{curElem.email}</p>
                                 <p>{curElem.password}</p>
 
