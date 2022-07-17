@@ -4,20 +4,22 @@ const ReactForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [allEntry,setAllEnrty] = useState([]);
+    const [allEntry, setAllEnrty] = useState([]);
 
-const formSubmit = (event)=>{
-    event.preventDefault();
+    const formSubmit = (event) => {
+        event.preventDefault();
 
-    const newEntry={
-        email:email,
-        password:password
-    };
-    setAllEnrty([...allEntry,newEntry]);
+        const newEntry = {
+            // id used For uniqeness and used in map method becuase map method always contain key.
+            id: new Date().getTime().toString,
+            email: email,
+            password: password
+        };
+        setAllEnrty([...allEntry, newEntry]);
 
-    setEmail("");
-    setPassword("");
-}
+        setEmail("");
+        setPassword("");
+    }
 
     const changeHandler0 = (event) => {
         setEmail(event.target.value);
@@ -37,13 +39,13 @@ const formSubmit = (event)=>{
 
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" autoComplete='off' required  value={email} onChange={changeHandler0} />
+                    <input type="email" name="email" id="email" autoComplete='off' required value={email} onChange={changeHandler0} />
                 </div>
 
 
                 <div>
                     <label htmlFor="Password">Password</label>
-                    <input type="password" name="password" id="password" autoComplete='off' required  value={password} onChange={changeHandler1} />
+                    <input type="password" name="password" id="password" autoComplete='off' required value={password} onChange={changeHandler1} />
                 </div>
 
                 <button type="submit">Submit</button>
@@ -52,11 +54,13 @@ const formSubmit = (event)=>{
 
             <div>
                 {
-                    allEntry.map((curElem)=>{
-                        return(
-                            <div className='showDataStyle '>
-                                <p>{curElem.email}</p>
-                                <p>{curElem.password}</p>
+                    allEntry.map((curElem) => {
+                        //object destructing
+                        const { id, email, password } = curElem;
+                        return (
+                            <div className='showDataStyle  ' key={id}>
+                                <p>{email}</p>
+                                <p>{password}</p>
 
                             </div>
                         )
