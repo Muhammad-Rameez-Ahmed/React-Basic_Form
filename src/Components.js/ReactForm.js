@@ -37,13 +37,13 @@ const formSubmit = (event)=>{
 
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" autoComplete='off' value={email} onChange={changeHandler0} />
+                    <input type="email" name="email" id="email" autoComplete='off' required  value={email} onChange={changeHandler0} />
                 </div>
 
 
                 <div>
                     <label htmlFor="Password">Password</label>
-                    <input type="password" name="password" id="password" autoComplete='off' value={password} onChange={changeHandler1} />
+                    <input type="password" name="password" id="password" autoComplete='off' required  value={password} onChange={changeHandler1} />
                 </div>
 
                 <button type="submit">Submit</button>
